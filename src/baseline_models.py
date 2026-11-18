@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import StratifiedKFold, cross_validate
+from sklearn.dummy import DummyClassifier
 
 
 
@@ -144,6 +145,10 @@ preprocessor = ColumnTransformer(
 
 
 models = {
+    "Dummy Classifier": DummyClassifier(
+        strategy="most_frequent"
+    ),
+
     "Logistic Regression": LogisticRegression(
         max_iter=2000,
         class_weight="balanced",
@@ -157,7 +162,6 @@ models = {
         n_jobs=1
     )
 }
-
 
 
 cv = StratifiedKFold(
