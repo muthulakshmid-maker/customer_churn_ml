@@ -19,13 +19,26 @@ df = pd.read_csv("data/train_data.csv")
 print("Training Dataset Shape:", df.shape)
 
 
-
 df = df.drop(columns=["customerID"], errors="ignore")
+
+df["TotalCharges"] = df["TotalCharges"].astype(str).str.strip()
 
 df["TotalCharges"] = pd.to_numeric(
     df["TotalCharges"],
     errors="coerce"
 )
+
+
+print("\nMissing Values After Cleaning:")
+
+print(df.isnull().sum())
+
+
+print("\nTotalCharges Data Type:")
+print(df["TotalCharges"].dtype)
+
+print("\nTotalCharges Missing Values:")
+print(df["TotalCharges"].isnull().sum())
 
 
 X = df.drop(columns=["Churn"])
