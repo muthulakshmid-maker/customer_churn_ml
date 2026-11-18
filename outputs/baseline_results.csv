@@ -1,0 +1,3 @@
+Model,CV ROC-AUC,CV F1
+Logistic Regression,0.8453,0.6264
+Random Forest,0.8282,0.6132
